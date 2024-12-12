@@ -20,7 +20,6 @@ export default function SignUpForm() {
           name,
           email,
           password,
-          gender,
           age,
           gender,
           genderPreference,

@@ -28,7 +28,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/matches", matchRoutes);
 app.use("/api/messages", messageRoutes);
 
-app.listen(5001, () => {
+app.listen(PORT, () => {
   console.log(`server running on http://localhost:${PORT}`);
   connectDB();
 });
