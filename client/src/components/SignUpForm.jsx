@@ -9,18 +9,22 @@ export default function SignUpForm() {
   const [age, setAge] = useState("");
   const [genderPreference, setGenderPreference] = useState("");
 
-  const loading = false;
-
-  const signup = () => {
-    alert("Signup");
-  };
+  const { signup, loading } = useAuthStore();
 
   return (
     <form
       className="space-y-6"
       onSubmit={(e) => {
         e.preventDefault();
-        signup();
+        signup({
+          name,
+          email,
+          password,
+          gender,
+          age,
+          gender,
+          genderPreference,
+        });
       }}
     >
       <div>
