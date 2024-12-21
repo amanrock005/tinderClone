@@ -26,11 +26,12 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           <div className="flex items-center">
-            <Link to="/" className="flex items-center space-x-2" />
-            <Flame className="w-8 h-8 text-white" />
-            <span className="text-2xl font-bold text-white hidden sm:inline">
-              Swipe
-            </span>
+            <Link to="/" className="flex items-center space-x-2">
+              <Flame className="w-8 h-8 text-white" />
+              <span className="text-2xl font-bold text-white hidden sm:inline">
+                Swipe
+              </span>
+            </Link>
           </div>
           <div className="hidden md:flex items-center space-x-4">
             {authUser ? (
