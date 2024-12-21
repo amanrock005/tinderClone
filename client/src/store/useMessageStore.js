@@ -48,6 +48,6 @@ export const useMessageStore = create((set) => ({
   },
   unsubscribeFromMessages: () => {
     const socket = getSocket();
-    socket.off("newMessage");
+    socket.off("newMessages");
   },
 }));

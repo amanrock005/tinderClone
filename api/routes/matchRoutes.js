@@ -9,7 +9,7 @@ import {
 const router = express.Router();
 
 router.post("/swipe-right/:likedUserId", protectRoute, swipeRight);
-router.post("/swipte-left/:dislikedUserId", protectRoute, swipteLeft);
+router.post("/swipe-left/:dislikedUserId", protectRoute, swipteLeft);
 router.get("/", protectRoute, getMatches);
 router.get("/user-profiles", protectRoute, getUserProfile);
 

@@ -1,13 +1,25 @@
 import Message from "../models/Message.js";
+import { getConnectedUsers, getIO } from "../socket/socket.server.js";
 
 export const sendMessage = async (req, res) => {
   try {
-    const { content, receiverId } = req.body;
+    const { receiverId, content } = req.body;
     const newMessage = await Message.create({
       sender: req.user.id,
       receiver: receiverId,
       content,
     });
+
+    //real time messaging using socket.io
+    const io = getIO();
+    const connectedUsers = getConnectedUsers();
+    const receiverSocketId = connectedUsers.get(receiverId);
+
+    if (receiverSocketId) {
+      io.to(receiverSocketId).emit("newMessage", {
+        message: newMessage,
+      });
+    }
 
     res.status(201).json({
       success: true,
@@ -29,7 +41,7 @@ export const getConversation = async (req, res) => {
     const message = await Message.find({
       $or: [
         { sender: req.user._id, receiver: userId },
-        { sender: userId, receiver: req.user_id },
+        { sender: userId, receiver: req.user._id },
       ],
     }).sort("createdAt");
 
